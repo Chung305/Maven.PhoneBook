@@ -31,10 +31,12 @@ public class PhoneBook {
     }
 
     public void remove(String name) {
+        phoneBook.remove(name);
     }
 
     public Boolean hasEntry(String name) {
-        return null;
+
+        return (reverseLookup(name) != null | phoneBook.containsKey(name));
     }
 
     public List<String> lookup(String name) {
@@ -42,11 +44,19 @@ public class PhoneBook {
     }
 
     public String reverseLookup(String phoneNumber)  {
+        for(String  each :phoneBook.keySet()){
+            if(phoneBook.get(each).contains(phoneNumber)){
+                return each;
+            }
+        }
+
         return null;
     }
 
     public List<String> getAllContactNames() {
-        return null;
+
+
+        return new ArrayList<> (phoneBook.keySet());
     }
 
     public Map<String, List<String>> getMap() {
